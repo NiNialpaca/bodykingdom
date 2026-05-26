@@ -10,10 +10,8 @@ content="width=device-width, initial-scale=1.0">
 
 <title>身體王國大冒險</title>
 
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- turn.js -->
 <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
 
 <style>
@@ -52,20 +50,16 @@ body{
 
     color:#7a4b5f;
 
-    background:rgba(255,255,255,0.7);
+    background:rgba(255,255,255,0.75);
 
-    padding:10px 22px;
+    padding:10px 24px;
 
     border-radius:999px;
 
-    backdrop-filter:blur(6px);
-
     z-index:99999;
-
-    pointer-events:none;
 }
 
-/* 整體版面 */
+/* 主版面 */
 
 .book-layout{
 
@@ -75,72 +69,66 @@ body{
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
 
-    gap:10px;
+    align-items:center;
 
-    padding:20px 40px;
+    gap:30px;
+
+    padding:30px;
 
     box-sizing:border-box;
-
-    overflow:hidden;
 }
 
 /* 左側介紹 */
 
 .intro{
 
-    width:500px;
+    width:430px;
 
-    height:700px;
+    height:620px;
 
-    overflow:hidden;
-
-    background:rgba(255,255,255,0.55);
+    background:rgba(255,255,255,0.5);
 
     backdrop-filter:blur(10px);
 
-    border-radius:30px;
+    border-radius:35px;
 
     padding:45px;
+
+    box-sizing:border-box;
 
     color:#7a4b5f;
 
     line-height:2;
 
-    font-size:1.1rem;
+    overflow:hidden;
+
+    flex-shrink:0;
 
     box-shadow:
     0 10px 30px rgba(0,0,0,0.08);
-
-    box-sizing:border-box;
-
-    flex-shrink:0;
 }
 
 .intro h1{
 
     margin-top:0;
 
-    font-size:2.5rem;
-
     color:#ff5fa2;
+
+    font-size:2.3rem;
 }
 
 .intro h2{
 
     color:#ff7eb6;
 
-    margin-top:30px;
+    margin-top:28px;
 }
 
 /* 書本 */
 
 .book-container{
-
-    flex:1;
 
     display:flex;
 
@@ -148,21 +136,19 @@ body{
 
     align-items:center;
 
-    margin-left:-60px;
+    margin-left:-40px;
 }
 
 #flipbook{
 
-    width:1200px;
+    width:1000px;
 
-    height:600px;
+    height:560px;
 }
 
 /* 每頁 */
 
 #flipbook .page{
-
-    box-shadow:none !important;
 
     background:transparent;
 
@@ -207,7 +193,7 @@ body{
 
 button{
 
-    padding:14px 28px;
+    padding:14px 30px;
 
     border:none;
 
@@ -242,8 +228,6 @@ button:hover{
 
     .book-layout{
 
-        justify-content:center;
-
         padding:0;
     }
 
@@ -253,6 +237,11 @@ button:hover{
 
         height:65vw;
     }
+
+    .book-container{
+
+        margin-left:0;
+    }
 }
 
 </style>
@@ -261,15 +250,11 @@ button:hover{
 
 <body>
 
-<!-- 作者 -->
-
 <div class="author">
 
 作者：高芮妮、李涵羚、張鈺汶
 
 </div>
-
-<!-- 主版面 -->
 
 <div class="book-layout">
 
@@ -318,41 +303,38 @@ TEX免疫軍團與B博士一起守護王國，
 
 </div>
 
-<!-- 書本 -->
+<!-- 書 -->
 
 <div class="book-container">
 
 <div id="flipbook">
 
-    <!-- 封面 -->
-    <div class="page">
-    <img src="page1.jpg">
-    </div>
+<div class="page">
+<img src="page1.jpg">
+</div>
 
-    <!-- 內頁 -->
-    <div class="page"><img src="page2.jpg"></div>
-    <div class="page"><img src="page3.jpg"></div>
-    <div class="page"><img src="page4.jpg"></div>
-    <div class="page"><img src="page5.jpg"></div>
-    <div class="page"><img src="page6.jpg"></div>
-    <div class="page"><img src="page7.jpg"></div>
-    <div class="page"><img src="page8.jpg"></div>
-    <div class="page"><img src="page9.jpg"></div>
-    <div class="page"><img src="page10.jpg"></div>
-    <div class="page"><img src="page11.jpg"></div>
-    <div class="page"><img src="page12.jpg"></div>
-    <div class="page"><img src="page13.jpg"></div>
-    <div class="page"><img src="page14.jpg"></div>
-    <div class="page"><img src="page15.jpg"></div>
-    <div class="page"><img src="page16.jpg"></div>
-    <div class="page"><img src="page17.jpg"></div>
-    <div class="page"><img src="page18.jpg"></div>
-    <div class="page"><img src="page19.jpg"></div>
+<div class="page"><img src="page2.jpg"></div>
+<div class="page"><img src="page3.jpg"></div>
+<div class="page"><img src="page4.jpg"></div>
+<div class="page"><img src="page5.jpg"></div>
+<div class="page"><img src="page6.jpg"></div>
+<div class="page"><img src="page7.jpg"></div>
+<div class="page"><img src="page8.jpg"></div>
+<div class="page"><img src="page9.jpg"></div>
+<div class="page"><img src="page10.jpg"></div>
+<div class="page"><img src="page11.jpg"></div>
+<div class="page"><img src="page12.jpg"></div>
+<div class="page"><img src="page13.jpg"></div>
+<div class="page"><img src="page14.jpg"></div>
+<div class="page"><img src="page15.jpg"></div>
+<div class="page"><img src="page16.jpg"></div>
+<div class="page"><img src="page17.jpg"></div>
+<div class="page"><img src="page18.jpg"></div>
+<div class="page"><img src="page19.jpg"></div>
 
-    <!-- 封底 -->
-    <div class="page">
-    <img src="page20.jpg">
-    </div>
+<div class="page">
+<img src="page20.jpg">
+</div>
 
 </div>
 
@@ -376,13 +358,11 @@ TEX免疫軍團與B博士一起守護王國，
 
 <script>
 
-/* 建立翻頁書 */
-
 $("#flipbook").turn({
 
-    width:1200,
+    width:1000,
 
-    height:600,
+    height:560,
 
     autoCenter:true,
 
@@ -393,7 +373,7 @@ $("#flipbook").turn({
     duration:1200
 });
 
-/* 按鈕翻頁 */
+/* 下一頁 */
 
 document
 .getElementById("nextBtn")
@@ -406,6 +386,8 @@ function(){
     .turn("next");
 });
 
+/* 上一頁 */
+
 document
 .getElementById("prevBtn")
 .addEventListener(
@@ -417,7 +399,7 @@ function(){
     .turn("previous");
 });
 
-/* 鍵盤左右鍵 */
+/* 鍵盤 */
 
 document.addEventListener(
 "keydown",
@@ -437,7 +419,7 @@ function(e){
     }
 });
 
-/* 手機左右滑 */
+/* 手機滑動 */
 
 let startX = 0;
 
@@ -471,7 +453,7 @@ function(e){
     }
 });
 
-/* 第一頁顯示介紹 */
+/* 第一頁才顯示介紹 */
 
 $("#flipbook").bind(
 "turned",
