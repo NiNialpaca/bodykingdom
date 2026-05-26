@@ -10,15 +10,19 @@ content="width=device-width, initial-scale=1.0">
 
 <title>身體王國大冒險</title>
 
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/turn.js@4/turn.min.js"></script>
+<!-- Turn.js -->
+<script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
 
 <style>
 
 body{
 
     margin:0;
+
+    overflow:hidden;
 
     background:
     linear-gradient(
@@ -27,16 +31,14 @@ body{
     #dff6ff
     );
 
-    overflow:hidden;
-
     font-family:
     "Noto Sans TC",
     sans-serif;
 }
 
-/* 封面畫面 */
+/* 書本置中 */
 
-#start-screen{
+.book-container{
 
     width:100vw;
 
@@ -44,71 +46,12 @@ body{
 
     display:flex;
 
-    flex-direction:column;
-
     justify-content:center;
 
     align-items:center;
-
-    text-align:center;
-}
-
-#start-screen h1{
-
-    font-size:4rem;
-
-    color:#ff4f93;
-
-    margin-bottom:10px;
-}
-
-#start-screen p{
-
-    font-size:1.4rem;
-
-    color:#666;
-}
-
-button{
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:#ff90c2;
-
-    color:white;
-
-    font-size:1.1rem;
-
-    cursor:pointer;
-
-    transition:0.3s;
-}
-
-button:hover{
-
-    background:#ff5fa2;
-
-    transform:scale(1.05);
 }
 
 /* 書本 */
-
-#book-container{
-
-    width:100vw;
-
-    height:100vh;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-}
 
 #flipbook{
 
@@ -117,10 +60,16 @@ button:hover{
     height:700px;
 }
 
-#flipbook div{
+/* 每頁 */
+
+#flipbook .page{
 
     background:white;
+
+    overflow:hidden;
 }
+
+/* 圖片 */
 
 #flipbook img{
 
@@ -129,30 +78,13 @@ button:hover{
     height:100%;
 
     object-fit:cover;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
 }
 
-/* 翻頁陰影 */
-
-.turn-page{
-
-    box-shadow:
-    0 0 20px rgba(0,0,0,0.2);
-}
-
-.controls{
-
-    position:fixed;
-
-    bottom:20px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    gap:20px;
-}
+/* 手機 */
 
 @media(max-width:1100px){
 
@@ -162,11 +94,6 @@ button:hover{
 
         height:65vw;
     }
-
-    #start-screen h1{
-
-        font-size:2.5rem;
-    }
 }
 
 </style>
@@ -175,74 +102,39 @@ button:hover{
 
 <body>
 
-<!-- 封面首頁 -->
-
-<div id="start-screen">
-
-    <h1>
-    📖 身體王國大冒險
-    </h1>
-
-    <p>
-    細胞、細菌與病毒的友情故事
-    </p>
-
-    <button onclick="startBook()">
-    開始閱讀 ✨
-    </button>
-
-</div>
-
-<!-- 書本 -->
-
-<div id="book-container">
+<div class="book-container">
 
 <div id="flipbook">
 
     <!-- 封面 -->
-
-    <div>
+    <div class="page">
     <img src="page1.jpg">
     </div>
 
     <!-- 內頁 -->
-
-    <div><img src="page2.jpg"></div>
-    <div><img src="page3.jpg"></div>
-    <div><img src="page4.jpg"></div>
-    <div><img src="page5.jpg"></div>
-    <div><img src="page6.jpg"></div>
-    <div><img src="page7.jpg"></div>
-    <div><img src="page8.jpg"></div>
-    <div><img src="page9.jpg"></div>
-    <div><img src="page10.jpg"></div>
-    <div><img src="page11.jpg"></div>
-    <div><img src="page12.jpg"></div>
-    <div><img src="page13.jpg"></div>
-    <div><img src="page14.jpg"></div>
-    <div><img src="page15.jpg"></div>
-    <div><img src="page16.jpg"></div>
-    <div><img src="page17.jpg"></div>
-    <div><img src="page18.jpg"></div>
-    <div><img src="page19.jpg"></div>
+    <div class="page"><img src="page2.jpg"></div>
+    <div class="page"><img src="page3.jpg"></div>
+    <div class="page"><img src="page4.jpg"></div>
+    <div class="page"><img src="page5.jpg"></div>
+    <div class="page"><img src="page6.jpg"></div>
+    <div class="page"><img src="page7.jpg"></div>
+    <div class="page"><img src="page8.jpg"></div>
+    <div class="page"><img src="page9.jpg"></div>
+    <div class="page"><img src="page10.jpg"></div>
+    <div class="page"><img src="page11.jpg"></div>
+    <div class="page"><img src="page12.jpg"></div>
+    <div class="page"><img src="page13.jpg"></div>
+    <div class="page"><img src="page14.jpg"></div>
+    <div class="page"><img src="page15.jpg"></div>
+    <div class="page"><img src="page16.jpg"></div>
+    <div class="page"><img src="page17.jpg"></div>
+    <div class="page"><img src="page18.jpg"></div>
+    <div class="page"><img src="page19.jpg"></div>
 
     <!-- 封底 -->
-
-    <div>
+    <div class="page">
     <img src="page20.jpg">
     </div>
-
-</div>
-
-<div class="controls">
-
-<button onclick="prevPage()">
-⬅ 上一頁
-</button>
-
-<button onclick="nextPage()">
-下一頁 ➡
-</button>
 
 </div>
 
@@ -250,60 +142,25 @@ button:hover{
 
 <script>
 
-/* 開始閱讀 */
+/* 建立翻頁書 */
 
-function startBook(){
+$("#flipbook").turn({
 
-    document
-    .getElementById("start-screen")
-    .style.display = "none";
+    width:1000,
 
-    document
-    .getElementById("book-container")
-    .style.display = "flex";
+    height:700,
 
-    $("#flipbook").turn({
+    autoCenter:true,
 
-        width:1000,
+    gradients:true,
 
-        height:700,
+    elevation:50,
 
-        autoCenter:true,
+    duration:1200
 
-        gradients:true,
+});
 
-        elevation:50,
-
-        duration:1200
-
-    });
-
-    /* 自動翻開封面動畫 */
-
-    setTimeout(function(){
-
-        $("#flipbook").turn("next");
-
-    },500);
-}
-
-/* 下一頁 */
-
-function nextPage(){
-
-    $("#flipbook")
-    .turn("next");
-}
-
-/* 上一頁 */
-
-function prevPage(){
-
-    $("#flipbook")
-    .turn("previous");
-}
-
-/* 鍵盤翻頁 */
+/* 左右鍵翻頁 */
 
 document.addEventListener(
 "keydown",
@@ -312,12 +169,50 @@ function(e){
 
     if(e.key==="ArrowRight"){
 
-        nextPage();
+        $("#flipbook").turn("next");
     }
 
     if(e.key==="ArrowLeft"){
 
-        prevPage();
+        $("#flipbook").turn("previous");
+    }
+});
+
+/* 手機 / 平板 左滑右滑 */
+
+let startX = 0;
+
+document.addEventListener(
+"touchstart",
+
+function(e){
+
+    startX =
+    e.changedTouches[0].screenX;
+});
+
+document.addEventListener(
+"touchend",
+
+function(e){
+
+    let endX =
+    e.changedTouches[0].screenX;
+
+    /* 左滑 */
+
+    if(startX - endX > 50){
+
+        $("#flipbook")
+        .turn("next");
+    }
+
+    /* 右滑 */
+
+    if(endX - startX > 50){
+
+        $("#flipbook")
+        .turn("previous");
     }
 });
 
