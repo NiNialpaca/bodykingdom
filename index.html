@@ -27,14 +27,18 @@ body{
     #dff6ff
     );
 
-    overflow-x:hidden;
+    overflow:hidden;
 
     font-family:
     "Noto Sans TC",
     sans-serif;
 }
 
-.cover{
+/* 封面畫面 */
+
+#start-screen{
+
+    width:100vw;
 
     height:100vh;
 
@@ -49,23 +53,25 @@ body{
     text-align:center;
 }
 
-.cover h1{
+#start-screen h1{
 
     font-size:4rem;
 
     color:#ff4f93;
+
+    margin-bottom:10px;
 }
 
-.cover p{
+#start-screen p{
 
     font-size:1.4rem;
 
-    color:#555;
+    color:#666;
 }
 
 button{
 
-    padding:15px 30px;
+    padding:15px 35px;
 
     border:none;
 
@@ -89,20 +95,19 @@ button:hover{
     transform:scale(1.05);
 }
 
-.hidden{
+/* 書本 */
+
+#book-container{
+
+    width:100vw;
+
+    height:100vh;
 
     display:none;
-}
 
-#book-wrapper{
-
-    display:flex;
-
-    flex-direction:column;
+    justify-content:center;
 
     align-items:center;
-
-    padding:40px 0;
 }
 
 #flipbook{
@@ -123,12 +128,26 @@ button:hover{
 
     height:100%;
 
-    object-fit:contain;
+    object-fit:cover;
+}
+
+/* 翻頁陰影 */
+
+.turn-page{
+
+    box-shadow:
+    0 0 20px rgba(0,0,0,0.2);
 }
 
 .controls{
 
-    margin-top:25px;
+    position:fixed;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
 
     display:flex;
 
@@ -144,7 +163,7 @@ button:hover{
         height:65vw;
     }
 
-    .cover h1{
+    #start-screen h1{
 
         font-size:2.5rem;
     }
@@ -156,7 +175,9 @@ button:hover{
 
 <body>
 
-<div class="cover">
+<!-- 封面首頁 -->
+
+<div id="start-screen">
 
     <h1>
     📖 身體王國大冒險
@@ -166,14 +187,15 @@ button:hover{
     細胞、細菌與病毒的友情故事
     </p>
 
-    <button onclick="openBook()">
+    <button onclick="startBook()">
     開始閱讀 ✨
     </button>
 
 </div>
 
-<div id="book-wrapper"
-class="hidden">
+<!-- 書本 -->
+
+<div id="book-container">
 
 <div id="flipbook">
 
@@ -228,12 +250,17 @@ class="hidden">
 
 <script>
 
-function openBook(){
+/* 開始閱讀 */
+
+function startBook(){
 
     document
-    .getElementById("book-wrapper")
-    .classList
-    .remove("hidden");
+    .getElementById("start-screen")
+    .style.display = "none";
+
+    document
+    .getElementById("book-container")
+    .style.display = "flex";
 
     $("#flipbook").turn({
 
@@ -245,20 +272,22 @@ function openBook(){
 
         gradients:true,
 
-        elevation:50
+        elevation:50,
+
+        duration:1200
 
     });
 
-    window.scrollTo({
+    /* 自動翻開封面動畫 */
 
-        top:document
-        .getElementById("book-wrapper")
-        .offsetTop,
+    setTimeout(function(){
 
-        behavior:"smooth"
+        $("#flipbook").turn("next");
 
-    });
+    },500);
 }
+
+/* 下一頁 */
 
 function nextPage(){
 
@@ -266,11 +295,15 @@ function nextPage(){
     .turn("next");
 }
 
+/* 上一頁 */
+
 function prevPage(){
 
     $("#flipbook")
     .turn("previous");
 }
+
+/* 鍵盤翻頁 */
 
 document.addEventListener(
 "keydown",
