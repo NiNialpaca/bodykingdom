@@ -36,6 +36,34 @@ body{
     sans-serif;
 }
 
+/* 作者 */
+
+.author{
+
+    position:fixed;
+
+    top:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:999;
+
+    background:
+    rgba(255,255,255,0.7);
+
+    padding:10px 24px;
+
+    border-radius:999px;
+
+    backdrop-filter:blur(10px);
+
+    font-size:18px;
+
+    color:#666;
+}
+
 /* 書本置中 */
 
 .book-container{
@@ -51,13 +79,13 @@ body{
     align-items:center;
 }
 
-/* 書本 */
+/* 書 */
 
 #flipbook{
 
-    width:1000px;
+    width:1400px;
 
-    height:600px;
+    height:850px;
 }
 
 /* 每頁 */
@@ -79,7 +107,9 @@ body{
 
     object-fit:contain;
 
-    background:transparent;
+    user-select:none;
+
+    -webkit-user-drag:none;
 }
 
 /* 按鈕 */
@@ -137,6 +167,11 @@ button:hover{
 
         height:65vw;
     }
+
+    .author{
+
+        font-size:14px;
+    }
 }
 
 </style>
@@ -145,40 +180,66 @@ button:hover{
 
 <body>
 
+<!-- 作者 -->
 
+<div class="author">
 
+作者：高芮妮、李涵羚、張鈺汶
+
+</div>
+
+<!-- 書 -->
 
 <div class="book-container">
+
 <div id="flipbook">
 
     <!-- 封面 -->
     <div class="page">
-    <img src="page1.jpg">
+    <img src="cover.jpg">
     </div>
 
-    <!-- 內頁 -->
-    <div class="page"><img src="page2.jpg"></div>
-    <div class="page"><img src="page3.jpg"></div>
-    <div class="page"><img src="page4.jpg"></div>
-    <div class="page"><img src="page5.jpg"></div>
-    <div class="page"><img src="page6.jpg"></div>
-    <div class="page"><img src="page7.jpg"></div>
-    <div class="page"><img src="page8.jpg"></div>
-    <div class="page"><img src="page9.jpg"></div>
-    <div class="page"><img src="page10.jpg"></div>
-    <div class="page"><img src="page11.jpg"></div>
-    <div class="page"><img src="page12.jpg"></div>
-    <div class="page"><img src="page13.jpg"></div>
-    <div class="page"><img src="page14.jpg"></div>
-    <div class="page"><img src="page15.jpg"></div>
-    <div class="page"><img src="page16.jpg"></div>
-    <div class="page"><img src="page17.jpg"></div>
-    <div class="page"><img src="page18.jpg"></div>
-    <div class="page"><img src="page19.jpg"></div>
+    <!-- 跨頁 -->
+
+    <div class="page">
+    <img src="spread1.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread2.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread3.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread4.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread5.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread6.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread7.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread8.jpg">
+    </div>
+
+    <div class="page">
+    <img src="spread9.jpg">
+    </div>
 
     <!-- 封底 -->
     <div class="page">
-    <img src="page20.jpg">
+    <img src="backcover.jpg">
     </div>
 
 </div>
@@ -205,9 +266,11 @@ button:hover{
 
 $("#flipbook").turn({
 
-    width:1000,
+    display:"single",
 
-    height:400,
+    width:1400,
+
+    height:850,
 
     autoCenter:true,
 
@@ -243,7 +306,7 @@ function(){
     .turn("previous");
 });
 
-/* 鍵盤左右鍵 */
+/* 鍵盤翻頁 */
 
 document.addEventListener(
 "keydown",
@@ -304,4 +367,5 @@ function(e){
 </script>
 
 </body>
+
 </html>
