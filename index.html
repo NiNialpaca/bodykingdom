@@ -13,7 +13,7 @@ content="width=device-width, initial-scale=1.0">
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- Turn.js -->
+<!-- turn.js -->
 <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js/turn.min.js"></script>
 
 <style>
@@ -84,6 +84,51 @@ body{
     -webkit-user-drag:none;
 }
 
+/* 按鈕 */
+
+.controls{
+
+    position:fixed;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:20px;
+
+    z-index:999;
+}
+
+button{
+
+    padding:14px 28px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#ff90c2;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+button:hover{
+
+    background:#ff5fa2;
+
+    transform:scale(1.05);
+}
+
 /* 手機 */
 
 @media(max-width:1100px){
@@ -140,6 +185,20 @@ body{
 
 </div>
 
+<!-- 按鈕 -->
+
+<div class="controls">
+
+<button id="prevBtn">
+⬅ 上一頁
+</button>
+
+<button id="nextBtn">
+下一頁 ➡
+</button>
+
+</div>
+
 <script>
 
 /* 建立翻頁書 */
@@ -160,7 +219,31 @@ $("#flipbook").turn({
 
 });
 
-/* 左右鍵翻頁 */
+/* 按鈕翻頁 */
+
+document
+.getElementById("nextBtn")
+.addEventListener(
+"click",
+
+function(){
+
+    $("#flipbook")
+    .turn("next");
+});
+
+document
+.getElementById("prevBtn")
+.addEventListener(
+"click",
+
+function(){
+
+    $("#flipbook")
+    .turn("previous");
+});
+
+/* 鍵盤左右鍵 */
 
 document.addEventListener(
 "keydown",
@@ -169,16 +252,18 @@ function(e){
 
     if(e.key==="ArrowRight"){
 
-        $("#flipbook").turn("next");
+        $("#flipbook")
+        .turn("next");
     }
 
     if(e.key==="ArrowLeft"){
 
-        $("#flipbook").turn("previous");
+        $("#flipbook")
+        .turn("previous");
     }
 });
 
-/* 手機 / 平板 左滑右滑 */
+/* 手機左右滑 */
 
 let startX = 0;
 
