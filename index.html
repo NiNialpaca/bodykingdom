@@ -35,7 +35,30 @@ body{
     "Noto Sans TC",
     sans-serif;
 }
+.author{
 
+    position:fixed;
+
+    top:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:1.1rem;
+
+    color:#7a4b5f;
+
+    background:rgba(255,255,255,0.6);
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+    backdrop-filter:blur(6px);
+
+    z-index:999;
+}
 /* 書本置中 */
 
 .book-container{
@@ -149,7 +172,11 @@ button:hover{
 </head>
 
 <body>
+<div class="author">
 
+作者：高芮妮、李涵羚、張鈺汶
+
+</div>
 <div class="book-container">
 
 <div id="flipbook">
